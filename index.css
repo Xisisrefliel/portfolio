@@ -1,3 +1,24 @@
-/* Base styles - Tailwind handles most styling via CDN */
-/* Additional custom styles can go here if needed */
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: #050505;
+}
+
+* {
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+}
+
+img,
+canvas,
+picture {
+  image-rendering: -webkit-optimize-contrast;
+}
 

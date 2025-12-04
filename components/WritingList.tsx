@@ -4,9 +4,10 @@ import { Post } from '../types';
 
 interface WritingListProps {
   posts: Post[];
+  onSelectPost?: (slug: string) => void;
 }
 
-const WritingList: React.FC<WritingListProps> = ({ posts }) => {
+const WritingList: React.FC<WritingListProps> = ({ posts, onSelectPost }) => {
   return (
     <>
       <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-8 pl-1">Writing</h2>
@@ -15,6 +16,12 @@ const WritingList: React.FC<WritingListProps> = ({ posts }) => {
           <motion.a
             key={post.id}
             href={`/blog/${post.slug}`}
+            onClick={(e) => {
+              if (onSelectPost) {
+                e.preventDefault();
+                onSelectPost(post.slug);
+              }
+            }}
             initial={{ opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

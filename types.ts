@@ -16,6 +16,17 @@ export interface Post {
   slug: string;
 }
 
+export interface BlogSection {
+  heading?: string;
+  body: string;
+}
+
+export interface BlogPostDetail extends Post {
+  dek?: string;
+  sections: BlogSection[];
+  outro?: string;
+}
+
 export interface Social {
   name: string;
   url: string;

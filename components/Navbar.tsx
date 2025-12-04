@@ -4,46 +4,73 @@ import { Home, PenTool, Mail, Command } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
+  const sectionsRef = React.useRef<HTMLElement[]>([]);
+  const viewportHeightRef = React.useRef<number>(typeof window !== 'undefined' ? window.innerHeight : 0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Check if scrolled to bottom
+    const refreshSections = () => {
+      sectionsRef.current = ['home', 'cmd', 'writing', 'contact']
+        .map((id) => document.getElementById(id) as HTMLElement | null)
+        .filter((el): el is HTMLElement => Boolean(el));
+      viewportHeightRef.current = window.innerHeight;
+    };
+
+    let ticking = false;
+    const updateActiveSection = () => {
+      ticking = false;
+
+      const scrollY = window.scrollY;
       const scrollHeight = document.documentElement.scrollHeight;
-      const scrollTop = window.scrollY;
-      const clientHeight = window.innerHeight;
-      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 50; // 50px threshold
+      const viewportHeight = viewportHeightRef.current;
 
-      if (isAtBottom) {
-        setActiveSection('contact');
+      // Prefer a passive, rAF-throttled read to avoid Safari stutter
+      if (scrollY + viewportHeight >= scrollHeight - 40) {
+        setActiveSection((prev) => (prev === 'contact' ? prev : 'contact'));
         return;
       }
 
-      // If scrolled to top, set home as active
-      if (window.scrollY < 100) {
-        setActiveSection('home');
+      if (scrollY < 80) {
+        setActiveSection((prev) => (prev === 'home' ? prev : 'home'));
         return;
       }
 
-      // Otherwise, check sections
-      const sections = ['cmd', 'writing', 'contact'];
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const probe = scrollY + viewportHeight * 0.45; // slightly biased upward feels smoother
+      let nextActive = 'home';
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+      for (const sectionEl of sectionsRef.current) {
+        const { top, height } = sectionEl.getBoundingClientRect();
+        const absoluteTop = top + scrollY;
+        if (probe >= absoluteTop && probe < absoluteTop + height) {
+          nextActive = sectionEl.id;
+          break;
         }
+      }
+
+      setActiveSection((prev) => (prev === nextActive ? prev : nextActive));
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateActiveSection);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    const onResize = () => {
+      refreshSections();
+      updateActiveSection();
+    };
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    refreshSections();
+    updateActiveSection();
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   const scrollToSection = (sectionId: string) => {

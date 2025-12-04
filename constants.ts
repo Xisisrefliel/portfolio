@@ -9,36 +9,12 @@ export const SOCIALS: Social[] = [
 export const PROJECTS: Project[] = [
   {
     id: '1',
-    title: 'Lumina Interface',
-    description: 'A design system for light-based user interfaces focused on ray-tracing aesthetics.',
-    tags: ['React', 'Three.js', 'WebGL'],
-    link: '#',
+    title: 'Takip',
+    description: 'A web app to track Movies and TV Shows',
+    tags: ['React', 'Laravel'],
+    link: 'https://takip.cloud',
     year: '2024'
   },
-  {
-    id: '2',
-    title: 'Vercel Analytics Clone',
-    description: 'Real-time privacy-friendly analytics dashboard rebuilt from scratch.',
-    tags: ['Next.js', 'Clickhouse', 'Tremor'],
-    link: '#',
-    year: '2023'
-  },
-  {
-    id: '3',
-    title: 'Mono Editor',
-    description: 'A distraction-free markdown editor for technical writers.',
-    tags: ['Tauri', 'Rust', 'React'],
-    link: '#',
-    year: '2023'
-  },
-  {
-    id: '4',
-    title: 'Chronos',
-    description: 'Experimental time-tracking for creative flow states.',
-    tags: ['Swift', 'SwiftUI'],
-    link: '#',
-    year: '2022'
-  }
 ];
 
 export const POSTS: Post[] = [
@@ -67,9 +43,9 @@ export const POSTS: Post[] = [
 
 export const EXPERIENCE: Experience[] = [
   {
-    role: 'Azubi',
+    role: 'Ausbildung als Anwendungsentwickler',
     company: 'Main-Netz Media',
-    period: '2023 - ...',
-    description: '3 Years of Apprenticeship in the field of Web Development'
+    period: '2023 - present',
+    description: '3 Years of Apprenticeship in Web Development with main focus on Laravel'
   }
 ];

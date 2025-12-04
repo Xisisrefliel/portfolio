@@ -94,6 +94,14 @@ const PHPIcon: React.FC<{ className?: string }> = ({
 );
 
 const Hero: React.FC = () => {
+  const favorites = [
+    { label: "React", Icon: ReactIcon, accent: "#6ee7ff" },
+    { label: "TypeScript", Icon: TypeScriptIcon, accent: "#8ab4ff" },
+    { label: "Tailwind CSS", Icon: TailwindIcon, accent: "#7cd4c6" },
+    { label: "Laravel", Icon: LaravelIcon, accent: "#ff8a8a" },
+    { label: "PHP", Icon: PHPIcon, accent: "#c5b3ff" },
+  ];
+
   return (
     <section className="mb-20 pt-16">
       <motion.div
@@ -104,7 +112,7 @@ const Hero: React.FC = () => {
         <div className="flex items-center gap-3 mb-6">
           <div className="relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-surfaceHighlight border border-white/5">
             <img
-              src="https://picsum.photos/100/100"
+              src="/profile.jpeg"
               alt="Avatar"
               className="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-500"
             />
@@ -119,45 +127,59 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <p className="text-base text-textMuted max-w-lg leading-relaxed mb-8">
-          I'm a multidisciplinary developer obsessed with micro-interactions and clean code. <br/> I love working with:
-          <br />
-          <span className="inline-flex items-center gap-1.5 mt-2">
-            <ReactIcon className="w-4 h-4" />
-            <span>React</span>
-          </span>
-          <br />
-          <span className="inline-flex items-center gap-1.5">
-            <TypeScriptIcon className="w-4 h-4" />
-            <span>TypeScript</span>
-          </span>
-          <br />
-          <span className="inline-flex items-center gap-1.5">
-            <TailwindIcon className="w-4 h-4" />
-            <span>Tailwind CSS</span>
-          </span>
-          <br />
-          <span className="inline-flex items-center gap-1.5">
-            <LaravelIcon className="w-4 h-4" />
-            <span>Laravel</span>
-          </span>
-          <br />
-          <span className="inline-flex items-center gap-1.5">
-            <PHPIcon className="w-4 h-4" />
-            <span>PHP</span>
-          </span>
-          <br />
-          Currently at{" "}
-          <a
-            href="https://main-netz-media.de"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors"
-          >
-            Main-Netz Media
-          </a>
-          .
-        </p>
+        <div className="text-base text-textMuted max-w-xl leading-relaxed space-y-5 mb-8">
+          <p>
+            I'm a Full Stack Developer obsessed with micro-interactions and good
+            UI/UX.
+          </p>
+
+          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-textMuted/70">
+            <span className="h-px w-10 bg-white/10" />
+            <span>Big fan of</span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {favorites.map(({ label, Icon, accent }) => (
+              <span
+                key={label}
+                className="group relative overflow-hidden flex items-center gap-2 px-3 py-2 rounded-lg border border-white/10 bg-white/[0.03] backdrop-blur-sm"
+                style={{
+                  boxShadow: `0 8px 32px -22px ${accent}`,
+                }}
+              >
+                <span
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: `linear-gradient(135deg, ${accent}25, transparent)`,
+                  }}
+                />
+                <Icon className="w-4 h-4 relative z-10" />
+                <span className="text-sm text-textMain relative z-10">
+                  {label}
+                </span>
+                <span
+                  className="absolute right-2 top-2 h-[3px] w-8 rounded-full opacity-40"
+                  style={{
+                    background: `linear-gradient(90deg, ${accent}, transparent)`,
+                  }}
+                />
+              </span>
+            ))}
+          </div>
+
+          <p className="text-sm">
+            Currently at{" "}
+            <a
+              href="https://main-netz-media.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors"
+            >
+              Main-Netz Media
+            </a>
+            .
+          </p>
+        </div>
 
         <div className="flex items-center gap-4">
           <a

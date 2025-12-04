@@ -51,7 +51,6 @@ const App: React.FC = () => {
             <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-6 pl-1">Connect</h2>
             <div className="flex flex-wrap gap-4">
               {SOCIALS.map((social) => {
-                // Dynamic Icon component
                 const Icon = (LucideIcons as any)[social.icon] || LucideIcons.Link;
                 return (
                   <a

@@ -18,8 +18,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-background text-textMain">
-        <div className="fixed top-0 left-0 w-full h-[520px] bg-gradient-to-b from-white/[0.04] via-white/[0.02] to-transparent pointer-events-none" />
+      <div className="min-h-screen text-textMain">
         <main className="relative max-w-3xl mx-auto px-6 pt-16">
           <a
             href="/"
@@ -41,8 +40,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-textMain">
-      <div className="fixed top-0 left-0 w-full h-[520px] bg-gradient-to-b from-white/[0.04] via-white/[0.02] to-transparent pointer-events-none" />
+    <div className="min-h-screen text-textMain">
       <main className="relative max-w-3xl mx-auto px-6 pb-24 pt-14">
         <div className="flex items-center justify-between">
           <a

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Home, PenTool, Mail, Command } from 'lucide-react';
+import { Home, PenTool, Command } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const refreshSections = () => {
-      sectionsRef.current = ['home', 'cmd', 'writing', 'contact']
+      sectionsRef.current = ['home', 'cmd', 'writing']
         .map((id) => document.getElementById(id) as HTMLElement | null)
         .filter((el): el is HTMLElement => Boolean(el));
       viewportHeightRef.current = window.innerHeight;
@@ -20,29 +20,36 @@ const Navbar: React.FC = () => {
       ticking = false;
 
       const scrollY = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
       const viewportHeight = viewportHeightRef.current;
+      const viewportCenter = scrollY + viewportHeight / 2;
 
       // Prefer a passive, rAF-throttled read to avoid Safari stutter
-      if (scrollY + viewportHeight >= scrollHeight - 40) {
-        setActiveSection((prev) => (prev === 'contact' ? prev : 'contact'));
-        return;
-      }
-
       if (scrollY < 80) {
         setActiveSection((prev) => (prev === 'home' ? prev : 'home'));
         return;
       }
 
-      const probe = scrollY + viewportHeight * 0.45; // slightly biased upward feels smoother
-      let nextActive = 'home';
+      if (sectionsRef.current.length === 0) return;
+
+      let nextActive = sectionsRef.current[0].id;
+      let closestDistance = Number.POSITIVE_INFINITY;
 
       for (const sectionEl of sectionsRef.current) {
         const { top, height } = sectionEl.getBoundingClientRect();
         const absoluteTop = top + scrollY;
-        if (probe >= absoluteTop && probe < absoluteTop + height) {
+        const absoluteBottom = absoluteTop + height;
+        const withinSection = viewportCenter >= absoluteTop && viewportCenter <= absoluteBottom;
+
+        if (withinSection) {
           nextActive = sectionEl.id;
+          closestDistance = 0;
           break;
+        }
+
+        const distance = Math.min(Math.abs(viewportCenter - absoluteTop), Math.abs(viewportCenter - absoluteBottom));
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          nextActive = sectionEl.id;
         }
       }
 
@@ -78,14 +85,7 @@ const Navbar: React.FC = () => {
     if (element) {
       const offset = 80; // Offset for navbar
       const elementPosition = element.getBoundingClientRect().top;
-      let offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      // For Writing section, leave scroll room so Contact can be activated
-      if (sectionId === 'writing') {
-        const scrollRoom = 250; // Leave 250px of scroll room below
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        offsetPosition = Math.min(offsetPosition, maxScroll - scrollRoom);
-      }
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
 
       window.scrollTo({
         top: offsetPosition,
@@ -121,13 +121,6 @@ const Navbar: React.FC = () => {
           label="Writing" 
           active={activeSection === 'writing'}
           onClick={() => scrollToSection('writing')}
-        />
-        <div className="w-px h-6 bg-white/10 mx-1"></div>
-        <NavItem 
-          icon={<Mail size={18} />} 
-          label="Contact" 
-          active={activeSection === 'contact'}
-          onClick={() => scrollToSection('contact')}
         />
       </nav>
     </div>

@@ -103,7 +103,7 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section className="mb-20 pt-16">
+    <section className="relative mb-20 pt-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -93,6 +93,26 @@ const PHPIcon: React.FC<{ className?: string }> = ({
   </svg>
 );
 
+const VueIcon: React.FC<{ className?: string }> = ({
+  className = "w-4 h-4",
+}) => (
+  <svg
+    className={className}
+    viewBox="0 0 256 221"
+    preserveAspectRatio="xMidYMid"
+  >
+    <path
+      d="M204.8 0H256L128 220.8 0 0h97.92L128 51.2 157.44 0h47.36Z"
+      fill="white"
+    />
+    <path d="m0 0 128 220.8L256 0h-51.2L128 132.48 50.56 0H0Z" fill="gray" />
+    <path
+      d="M50.56 0 128 133.12 204.8 0h-47.36L128 51.2 97.92 0H50.56Z"
+      fill="white"
+    />
+  </svg>
+);
+
 const Hero: React.FC = () => {
   const favorites = [
     { label: "React", Icon: ReactIcon, accent: "#6ee7ff" },
@@ -100,6 +120,7 @@ const Hero: React.FC = () => {
     { label: "Tailwind CSS", Icon: TailwindIcon, accent: "#7cd4c6" },
     { label: "Laravel", Icon: LaravelIcon, accent: "#ff8a8a" },
     { label: "PHP", Icon: PHPIcon, accent: "#c5b3ff" },
+    { label: "Vue", Icon: VueIcon, accent: "#41B883" },
   ];
 
   return (
@@ -127,12 +148,23 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-base text-textMuted max-w-xl leading-relaxed space-y-5 mb-8">
+        <div className="text-base text-textMuted max-w-none leading-relaxed space-y-5 mb-8">
           <p>
-            I'm a Full Stack Developer obsessed with micro-interactions and good
-            UI/UX.
+            I'm a Full Stack Developer based in Germany. I'm obsessed with micro-interactions and good
+            UI/UX design.
           </p>
-
+          <p className="text-sm">
+            Currently at{" "}
+            <a
+              href="https://main-netz-media.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors"
+            >
+              Main-Netz Media
+            </a>
+            .
+          </p>
           <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-textMuted/70">
             <span className="h-px w-10 bg-white/10" />
             <span>Big fan of</span>
@@ -167,18 +199,6 @@ const Hero: React.FC = () => {
             ))}
           </div>
 
-          <p className="text-sm">
-            Currently at{" "}
-            <a
-              href="https://main-netz-media.de"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors"
-            >
-              Main-Netz Media
-            </a>
-            .
-          </p>
         </div>
 
         <div className="flex items-center gap-4">

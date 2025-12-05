@@ -19,7 +19,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
   if (!post) {
     return (
       <div className="min-h-screen text-textMain">
-        <main className="relative max-w-3xl mx-auto px-6 pt-16">
+        <main className="relative mx-auto px-6 pt-16 max-w-[880px] lg:max-w-[940px]">
           <a
             href="/"
             onClick={handleBackClick}
@@ -41,7 +41,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
 
   return (
     <div className="min-h-screen text-textMain">
-      <main className="relative max-w-3xl mx-auto px-6 pb-24 pt-14">
+      <main className="relative mx-auto px-6 pb-24 pt-14 max-w-[880px] lg:max-w-[940px]">
         <div className="flex items-center justify-between">
           <a
             href="/"

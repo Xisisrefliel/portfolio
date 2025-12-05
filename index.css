@@ -2,6 +2,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-size: clamp(16px, 1.2vw, 18px);
 }
 
 body {

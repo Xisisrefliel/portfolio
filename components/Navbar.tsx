@@ -6,6 +6,7 @@ const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('home');
   const sectionsRef = React.useRef<HTMLElement[]>([]);
   const viewportHeightRef = React.useRef<number>(typeof window !== 'undefined' ? window.innerHeight : 0);
+  const suppressScrollHighlightRef = React.useRef(false);
 
   useEffect(() => {
     const refreshSections = () => {
@@ -18,6 +19,8 @@ const Navbar: React.FC = () => {
     let ticking = false;
     const updateActiveSection = () => {
       ticking = false;
+
+      if (suppressScrollHighlightRef.current) return;
 
       const scrollY = window.scrollY;
       const viewportHeight = viewportHeightRef.current;
@@ -83,14 +86,16 @@ const Navbar: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const offset = 80; // Offset for navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      suppressScrollHighlightRef.current = true;
+      setActiveSection(sectionId);
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      const { top, height } = element.getBoundingClientRect();
+      const target = top + window.pageYOffset + height / 2 - window.innerHeight / 2;
+      window.scrollTo({ top: Math.max(target, 0), behavior: 'smooth' });
+
+      window.setTimeout(() => {
+        suppressScrollHighlightRef.current = false;
+      }, 650);
     }
   };
 

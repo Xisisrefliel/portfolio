@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Hero from './components/Hero';
 import ProjectCard from './components/ProjectCard';
@@ -10,27 +10,23 @@ import BlogPostPage from './components/BlogPostPage';
 import { PROJECTS, POSTS, EXPERIENCE, SOCIALS, BLOG_POSTS } from './constants';
 import * as LucideIcons from 'lucide-react';
 
-const App: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
-  const [currentSlug, setCurrentSlug] = useState<string | null>(null);
+const getSlugFromPath = () => {
+  if (typeof window === 'undefined') return null;
+  const match = window.location.pathname.match(/^\/blog\/([^/]+)/);
+  return match ? match[1] : null;
+};
 
-  const syncFromPath = useCallback(() => {
-    const path = window.location.pathname;
-    const match = path.match(/^\/blog\/([^/]+)/);
-    setCurrentSlug(match ? match[1] : null);
-  }, []);
+const App: React.FC = () => {
+  const [currentSlug, setCurrentSlug] = useState<string | null>(() => getSlugFromPath());
 
   useEffect(() => {
-    setMounted(true);
-    syncFromPath();
-
     const handlePopState = () => {
-      syncFromPath();
+      setCurrentSlug(getSlugFromPath());
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, [syncFromPath]);
+  }, []);
 
   const handleSelectPost = (slug: string) => {
     window.history.pushState({}, '', `/blog/${slug}`);
@@ -40,9 +36,20 @@ const App: React.FC = () => {
   const handleBackHome = () => {
     window.history.pushState({}, '', `/`);
     setCurrentSlug(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (!mounted) return null;
+  useEffect(() => {
+    const targetPath = currentSlug ? `/blog/${currentSlug}` : '/';
+
+    if (typeof window !== 'undefined' && window.location.pathname !== targetPath) {
+      window.history.replaceState({}, '', targetPath);
+    }
+
+    if (!currentSlug) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [currentSlug]);
 
   const post = currentSlug
     ? BLOG_POSTS.find((p) => p.slug === currentSlug) || null
@@ -75,7 +82,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="min-h-screen font-sans selection:bg-white/20 selection:text-white"
           >
-            <main className="relative z-10 max-w-2xl mx-auto px-6 pb-32">
+            <main className="relative z-10 max-w-[1100px] mx-auto px-8 pb-32">
             <div className="pointer-events-none absolute inset-x-0 top-1 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent blur-sm opacity-90" />
               <section id="home">
                 <Hero />

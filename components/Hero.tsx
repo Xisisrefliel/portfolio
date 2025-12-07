@@ -184,11 +184,13 @@ const Hero: React.FC = () => {
             <div className="overflow-hidden py-4">
               <motion.div 
                 className="flex gap-4 w-max"
-                animate={{ x: ["0%", "-50%"] }}
+                initial={{ x: 0 }}
+                animate={{ x: "-50%" }}
                 transition={{ 
                   duration: 20,
                   ease: "linear",
                   repeat: Infinity,
+                  repeatType: "loop",
                 }}
               >
                 {[...favorites, ...favorites].map(({ label, Icon, accent }, idx) => (

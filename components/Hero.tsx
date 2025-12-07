@@ -133,11 +133,19 @@ const Hero: React.FC = () => {
         <div className="mb-10">
           <div className="flex items-center gap-4 mb-5">
             <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-white/10 ring-offset-2 ring-offset-[#050505]">
-              <img
-                src="/profile.jpeg"
-                alt="Avatar"
-                className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-500"
-              />
+              <picture>
+                <source srcSet="/profile-optimized.jpeg" type="image/jpeg" />
+                <img
+                  src="/profile-optimized.jpeg"
+                  alt="Avatar"
+                  width={750}
+                  height={1000}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-500"
+                />
+              </picture>
             </div>
             <motion.h1 
               className="text-3xl sm:text-4xl font-bold tracking-tight"

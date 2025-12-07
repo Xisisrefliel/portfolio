@@ -11,8 +11,8 @@ export const PROJECTS: Project[] = [
     id: '1',
     title: 'Takip',
     description: 'A web app to track Movies and TV Shows',
-    tags: ['React', 'Laravel'],
-    link: 'https://takip.cloud',
+    tags: ['React', 'Next.js'],
+    link: 'https://takip-xi.vercel.app/',
     year: '2024'
   },
 ];

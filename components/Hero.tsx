@@ -203,7 +203,7 @@ const Hero: React.FC = () => {
 
         <div className="flex items-center gap-4">
           <a
-            href="mailto:hello@example.com"
+            href="mailto:feherlofia@icloud.com"
             className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors"
           >
             Contact Me

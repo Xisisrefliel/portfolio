@@ -53,12 +53,12 @@ const TailwindIcon: React.FC<{ className?: string }> = ({
   className = "w-4 h-4",
 }) => (
   <svg className={className} fill="none" viewBox="0 0 54 33">
-    <g clip-path="url(#tailwindcss-a)">
+    <g clipPath="url(#tailwindcss-a)">
       <path
         fill="white"
         fillRule="evenodd"
         d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
     </g>
     <defs>
@@ -130,21 +130,25 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="flex items-center gap-3 mb-6">
-          <div className="relative flex items-center justify-center w-12 h-12 rounded-full overflow-hidden bg-surfaceHighlight border border-white/5">
-            <img
-              src="/profile.jpeg"
-              alt="Avatar"
-              className="w-full h-full object-cover opacity-90 grayscale hover:grayscale-0 transition-all duration-500"
-            />
-          </div>
-          <div className="flex flex-col">
-            <h1 className="text-xl font-semibold text-textMain tracking-tight">
-              Ömer Faruk Gül
-            </h1>
-            <span className="text-sm text-textMuted font-medium">
-              Web Developer
-            </span>
+        <div className="mb-10">
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-white/10 ring-offset-2 ring-offset-[#050505]">
+              <img
+                src="/profile.jpeg"
+                alt="Avatar"
+                className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+            <motion.h1 
+              className="text-3xl sm:text-4xl font-bold tracking-tight"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+            >
+              <span className="bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
+                Ömer Faruk Gül
+              </span>
+            </motion.h1>
           </div>
         </div>
 

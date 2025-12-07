@@ -165,38 +165,55 @@ const Hero: React.FC = () => {
             </a>
             .
           </p>
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-textMain/80">
-            <span className="h-px w-10 bg-white/10" />
-            <span>Big fan of</span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {favorites.map(({ label, Icon, accent }) => (
-              <span
-                key={label}
-                className="group relative overflow-hidden flex items-center gap-2 px-3 py-2 rounded-lg border border-white/10 bg-white/[0.03] backdrop-blur-sm"
-                style={{
-                  boxShadow: `0 8px 32px -22px ${accent}`,
+          <div className="relative -mx-6 sm:-mx-0">
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+            
+            <div className="overflow-hidden py-4">
+              <motion.div 
+                className="flex gap-4 w-max"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ 
+                  duration: 20,
+                  ease: "linear",
+                  repeat: Infinity,
                 }}
               >
-                <span
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: `linear-gradient(135deg, ${accent}25, transparent)`,
-                  }}
-                />
-                <Icon className="w-4 h-4 relative z-10" />
-                <span className="text-sm text-textMain relative z-10">
-                  {label}
-                </span>
-                <span
-                  className="absolute right-2 top-2 h-[3px] w-8 rounded-full opacity-40"
-                  style={{
-                    background: `linear-gradient(90deg, ${accent}, transparent)`,
-                  }}
-                />
-              </span>
-            ))}
+                {[...favorites, ...favorites].map(({ label, Icon, accent }, idx) => (
+                  <motion.div
+                    key={`${label}-${idx}`}
+                    className="group relative flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm cursor-default select-none"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
+                    <div 
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                      style={{
+                        background: `radial-gradient(circle at 30% 50%, ${accent}15, transparent 60%)`,
+                      }}
+                    />
+                    <div 
+                      className="relative flex items-center justify-center w-8 h-8 rounded-xl"
+                      style={{
+                        background: `linear-gradient(135deg, ${accent}20, ${accent}05)`,
+                        boxShadow: `0 0 20px ${accent}15`,
+                      }}
+                    >
+                      <Icon className="w-4 h-4 relative z-10" />
+                    </div>
+                    <span className="text-sm font-medium text-textMain/90 relative z-10 tracking-wide">
+                      {label}
+                    </span>
+                    <div 
+                      className="absolute -bottom-px left-4 right-4 h-px opacity-30"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
+                      }}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
 
         </div>

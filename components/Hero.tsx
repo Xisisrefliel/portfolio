@@ -143,7 +143,8 @@ const Hero: React.FC = () => {
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
-                  className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-500"
+                  draggable={false}
+                  className="w-full h-full object-cover grayscale"
                 />
               </picture>
             </div>

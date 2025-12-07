@@ -40,15 +40,15 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const targetPath = currentSlug ? `/blog/${currentSlug}` : '/';
 
-    if (typeof window !== 'undefined' && window.location.pathname !== targetPath) {
+    if (window.location.pathname !== targetPath) {
       window.history.replaceState({}, '', targetPath);
     }
 
-    if (!currentSlug) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: currentSlug ? 'auto' : 'smooth' });
   }, [currentSlug]);
 
   const post = currentSlug

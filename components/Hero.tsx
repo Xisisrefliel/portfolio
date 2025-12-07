@@ -150,8 +150,8 @@ const Hero: React.FC = () => {
 
         <div className="text-base text-textMuted max-w-none leading-relaxed space-y-5 mb-8">
           <p>
-            I'm a Full Stack Developer based in Germany. I'm obsessed with micro-interactions and good
-            UI/UX design.
+            I'm a Full Stack Developer based in Germany. I'm obsessed with micro-interactions, good
+            UI/UX and solid backends.
           </p>
           <p className="text-sm">
             Currently at{" "}

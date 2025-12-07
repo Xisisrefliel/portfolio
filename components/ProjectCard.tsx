@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="group block relative overflow-hidden"
     >
-      <div className="relative p-6 rounded-2xl bg-gradient-to-br from-white/[0.04] to-transparent border border-white/[0.06] backdrop-blur-sm transition-all duration-500 group-hover:border-white/[0.12] group-hover:from-white/[0.06]">
+      <div className="relative p-6 rounded-2xl overflow-hidden bg-gradient-to-br from-white/[0.04] to-transparent border border-white/[0.06] backdrop-blur-sm transition-all duration-500 group-hover:border-white/[0.12] group-hover:from-white/[0.06]">
         
         <div 
           className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"

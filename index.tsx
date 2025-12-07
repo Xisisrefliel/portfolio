@@ -17,8 +17,50 @@ if (!rootElement) {
 }
 
 const root = createRoot(rootElement);
+
+const FontLoader: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [ready, setReady] = React.useState(false);
+
+  React.useEffect(() => {
+    let mounted = true;
+
+    const loadFonts = async () => {
+      try {
+        await Promise.all([
+          document.fonts.load('400 1em Manrope'),
+          document.fonts.load('500 1em Manrope'),
+          document.fonts.load('600 1em Manrope'),
+          document.fonts.load('700 1em Manrope'),
+          document.fonts.load('400 1em "Playfair Display"'),
+          document.fonts.load('600 1em "Playfair Display"'),
+        ]);
+      } catch {}
+      if (mounted) setReady(true);
+    };
+
+    loadFonts();
+
+    const timeout = setTimeout(() => {
+      if (mounted) setReady(true);
+    }, 1500);
+
+    return () => {
+      mounted = false;
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  if (!ready) {
+    return null;
+  }
+
+  return <>{children}</>;
+};
+
 root.render(
   <React.StrictMode>
-    <App />
+    <FontLoader>
+      <App />
+    </FontLoader>
   </React.StrictMode>
 );

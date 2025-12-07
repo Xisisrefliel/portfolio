@@ -142,7 +142,9 @@ const NavItem: React.FC<{
     onClick={onClick}
     className={`
       relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 group
-      ${active ? 'bg-white text-black' : 'text-textMuted hover:text-textMain hover:bg-white/10'}
+      ${active 
+        ? 'bg-white text-black shadow-[0_0_12px_rgba(255,255,255,0.4)]' 
+        : 'text-textMuted hover:text-textMain hover:bg-white/5'}
     `}
     aria-label={label}
   >

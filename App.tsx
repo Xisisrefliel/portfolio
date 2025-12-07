@@ -82,7 +82,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="min-h-screen font-sans selection:bg-white/20 selection:text-white"
           >
-            <main className="relative z-10 max-w-[1100px] mx-auto px-8 pb-32">
+            <main role="main" className="relative z-10 max-w-[1100px] mx-auto px-8 pb-32">
             <div className="pointer-events-none absolute inset-x-0 top-1 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent blur-sm opacity-90" />
               <section id="home">
                 <Hero />
@@ -123,8 +123,8 @@ const App: React.FC = () => {
                   </div>
               </section>
               
-              <footer className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-textMuted/50">
-                <p className="mt-2 sm:mt-0">Built with React & Tailwind</p>
+              <footer className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-textMuted/70">
+                <p className="mt-2 sm:mt-0 text-textMain/80">Built with React & Tailwind</p>
               </footer>
 
             </main>

@@ -34,7 +34,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
   if (!post) {
     return (
       <div className="min-h-screen text-textMain">
-        <main className="relative mx-auto px-6 pt-16 max-w-[880px] lg:max-w-[940px]">
+        <main role="main" className="relative mx-auto px-6 pt-16 max-w-[880px] lg:max-w-[940px]">
           <a
             href="/"
             onClick={handleBackClick}
@@ -56,7 +56,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
 
   return (
     <div className="min-h-screen text-textMain">
-      <main className="relative mx-auto px-6 pb-24 pt-14 max-w-[880px] lg:max-w-[940px]">
+      <main role="main" className="relative mx-auto px-6 pb-24 pt-14 max-w-[880px] lg:max-w-[940px]">
         <div className="flex items-center justify-between">
           <a
             href="/"
@@ -66,7 +66,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
             <ArrowLeft size={16} />
             Back
           </a>
-          <span className="text-[11px] uppercase tracking-[0.22em] text-textMuted/70">
+          <span className="text-[11px] uppercase tracking-[0.22em] text-textMain/80">
             Journal
           </span>
         </div>
@@ -75,11 +75,11 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
           <div className="pointer-events-none absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_34%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.06),transparent_30%)]" />
           <div className="relative space-y-6">
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-textMuted">
-              <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.06] text-[11px]">
+              <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.06] text-[11px] text-textMain">
                 {post.date}
               </span>
               <span className="h-[1px] w-6 bg-white/10" />
-              <span className="text-textMuted/80">{post.readTime} read</span>
+              <span className="text-textMain/85">{post.readTime} read</span>
             </div>
             <motion.h1
               initial={{ opacity: 0, y: 12 }}

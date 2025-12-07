@@ -165,7 +165,7 @@ const Hero: React.FC = () => {
             </a>
             .
           </p>
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-textMuted/70">
+          <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-textMain/80">
             <span className="h-px w-10 bg-white/10" />
             <span>Big fan of</span>
           </div>
@@ -204,7 +204,7 @@ const Hero: React.FC = () => {
         <div className="flex items-center gap-4">
           <a
             href="mailto:feherlofia@icloud.com"
-            className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors"
+            className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.4)]"
           >
             Contact Me
             <ArrowUpRight

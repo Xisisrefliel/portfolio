@@ -182,23 +182,11 @@ const Hero: React.FC = () => {
             <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
             
             <div className="overflow-hidden py-4">
-              <motion.div 
-                className="flex gap-4 w-max"
-                initial={{ x: 0 }}
-                animate={{ x: "-50%" }}
-                transition={{ 
-                  duration: 20,
-                  ease: "linear",
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-              >
+              <div className="flex gap-4 w-max animate-marquee">
                 {[...favorites, ...favorites].map(({ label, Icon, accent }, idx) => (
-                  <motion.div
+                  <div
                     key={`${label}-${idx}`}
-                    className="group relative flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm cursor-default select-none"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    className="group relative flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm cursor-default select-none transition-transform duration-200 hover:scale-105 hover:-translate-y-0.5"
                   >
                     <div 
                       className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -224,9 +212,9 @@ const Hero: React.FC = () => {
                         background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
                       }}
                     />
-                  </motion.div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
 

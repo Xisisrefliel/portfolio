@@ -9,6 +9,8 @@
     "preview": "bun run vite preview"
   },
   "dependencies": {
+    "@fontsource/manrope": "^5.2.8",
+    "@fontsource/playfair-display": "^5.2.8",
     "framer-motion": "^12.23.25",
     "lucide-react": "^0.555.0",
     "react": "^19.2.1",

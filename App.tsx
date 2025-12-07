@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Github, Twitter, Mail, Link as LinkIcon } from 'lucide-react';
 import Hero from './components/Hero';
 import ProjectCard from './components/ProjectCard';
 import WritingList from './components/WritingList';
@@ -8,7 +9,6 @@ import ExperienceList from './components/ExperienceList';
 import Navbar from './components/Navbar';
 import BlogPostPage from './components/BlogPostPage';
 import { PROJECTS, POSTS, EXPERIENCE, SOCIALS, BLOG_POSTS } from './constants';
-import * as LucideIcons from 'lucide-react';
 
 const getSlugFromPath = () => {
   if (typeof window === 'undefined') return null;
@@ -107,7 +107,8 @@ const App: React.FC = () => {
                   <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-6 pl-1">Connect</h2>
                   <div className="flex flex-wrap gap-4">
                     {SOCIALS.map((social) => {
-                      const Icon = (LucideIcons as any)[social.icon] || LucideIcons.Link;
+                      const icons = { Twitter, Github, Mail };
+                      const Icon = icons[social.icon as keyof typeof icons] || LinkIcon;
                       return (
                         <a
                           key={social.name}

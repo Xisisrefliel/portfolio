@@ -148,7 +148,7 @@ const Hero: React.FC = () => {
                 />
               </picture>
             </div>
-            <motion.h1 
+            <motion.h1
               className="text-3xl sm:text-4xl font-bold tracking-tight"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -172,15 +172,18 @@ const Hero: React.FC = () => {
             >
               Main-Netz Media
             </a>
-            . I focus on micro-interactions, seamless UI/UX, and robust backends.
+            . I focus on micro-interactions, seamless UI/UX, and robust
+            backends.
           </p>
           <p>
             I build with <span className="text-textMain">React</span> and{" "}
             <span className="text-textMain">Vue</span>, backed by{" "}
             <span className="text-textMain">Laravel</span>. I use{" "}
             <span className="text-textMain">Inertia.js</span> to connect the
-            stack, and style with <span className="text-textMain">Tailwind CSS</span>
-            —adding life to interfaces with <span className="text-textMain">motion.dev</span> and{" "}
+            stack, and style with{" "}
+            <span className="text-textMain">Tailwind CSS </span>
+            adding life to interfaces with{" "}
+            <span className="text-textMain">motion.dev</span> and{" "}
             <span className="text-textMain">GSAP</span>.
           </p>
         </div>

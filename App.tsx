@@ -6,7 +6,6 @@ import Hero from './components/Hero';
 import ProjectCard from './components/ProjectCard';
 import WritingList from './components/WritingList';
 import ExperienceList from './components/ExperienceList';
-import Navbar from './components/Navbar';
 import BlogPostPage from './components/BlogPostPage';
 import { PROJECTS, POSTS, EXPERIENCE, SOCIALS, BLOG_POSTS } from './constants';
 
@@ -94,7 +93,7 @@ const App: React.FC = () => {
 
               <ExperienceList experiences={EXPERIENCE} />
 
-              <section id="writing" className="mb-24">
+              <section id="writing" className="mb-8 border-t border-white/10 pt-12">
                 <WritingList posts={POSTS} onSelectPost={handleSelectPost} />
               </section>
 
@@ -118,14 +117,10 @@ const App: React.FC = () => {
                   </div>
               </section>
               
-              <footer className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/5 text-xs text-textMuted/70">
+              <footer className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-textMuted/70">
                 <p className="mt-2 sm:mt-0 text-textMain/80">Built with React & Tailwind</p>
               </footer>
-
             </main>
-
-            <Navbar />
-            
           </motion.div>
         )}
       </AnimatePresence>

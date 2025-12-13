@@ -2,6 +2,7 @@ import * as React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { BlogPostDetail } from '../types';
+import GlassCard from './GlassCard';
 
 interface BlogPostPageProps {
   post?: BlogPostDetail | null;
@@ -71,9 +72,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
           </span>
         </div>
 
-        <div className="relative mt-10 overflow-hidden rounded-3xl bg-gradient-to-br from-white/[0.05] via-white/[0.03] to-transparent px-6 py-8 shadow-[0_26px_90px_-70px_rgba(0,0,0,0.85)]">
-          <div className="pointer-events-none absolute inset-0 opacity-60 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_34%),radial-gradient(circle_at_80%_0%,rgba(255,255,255,0.06),transparent_30%)]" />
-          <div className="relative space-y-6">
+        <GlassCard className="mt-10">
+          <div className="space-y-6">
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-textMuted">
               <span className="px-2.5 py-1 rounded-full border border-white/10 bg-white/[0.06] text-[11px] text-textMain">
                 {post.date}
@@ -95,7 +95,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post, onBack }) => {
               </p>
             )}
           </div>
-        </div>
+        </GlassCard>
 
         <article className="mt-12 space-y-10 text-[16px] leading-[1.85] text-textMuted">
           {post.sections.map((section, idx) => (

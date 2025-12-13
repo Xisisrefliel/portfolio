@@ -187,7 +187,7 @@ const Hero: React.FC = () => {
             <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
               Vue
             </span>{" "}
-            depending on the project, and{" "}
+            depending on the project, with{" "}
             <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
               Laravel
             </span>{" "}
@@ -195,11 +195,19 @@ const Hero: React.FC = () => {
             <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
               Inertia.js
             </span>{" "}
-            as the translation layer for my full-stack apps and{" "}
+            as the translation layer for my full-stack apps,{" "}
             <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
               Tailwind CSS
             </span>{" "}
-            for styling.
+            for styling, and{" "}
+            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
+              motion.dev
+            </span>{" "}
+            or{" "}
+            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
+              GSAP
+            </span>{" "}
+            to bring interfaces to life with smooth animations.
           </p>
 
         </div>

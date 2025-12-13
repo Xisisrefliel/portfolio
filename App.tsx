@@ -57,10 +57,6 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-background text-textMain">
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full h-[520px] bg-gradient-to-b from-white/[0.035] via-white/[0.02] to-transparent" />
-      </div>
-
       <AnimatePresence mode="wait" initial={false}>
         {currentSlug ? (
           <motion.div
@@ -83,7 +79,6 @@ const App: React.FC = () => {
             className="min-h-screen font-sans selection:bg-white/20 selection:text-white"
           >
             <main role="main" className="relative z-10 max-w-[1100px] mx-auto px-8 pb-32">
-            <div className="pointer-events-none absolute inset-x-0 top-1 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent blur-sm opacity-90" />
               <section id="home">
                 <Hero />
               </section>

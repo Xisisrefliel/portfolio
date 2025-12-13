@@ -161,55 +161,28 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-base text-textMuted max-w-none leading-relaxed space-y-5 mb-8">
+        <div className="text-base text-textMuted max-w-2xl leading-relaxed space-y-4 mb-8">
           <p>
-            I'm a Full Stack Developer based in Germany. I'm obsessed with micro-interactions, good
-            UI/UX and solid backends.
-          </p>
-          <p className="text-sm">
-            Currently at{" "}
+            I'm a Full Stack Developer based in Germany, currently working at{" "}
             <a
               href="https://main-netz-media.de"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors"
+              className="text-textMain hover:text-white transition-colors"
             >
               Main-Netz Media
             </a>
-            .
+            . I focus on micro-interactions, seamless UI/UX, and robust backends.
           </p>
-          <p className="text-sm">
-            I like using{" "}
-            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
-              React
-            </span>{" "}
-            and{" "}
-            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
-              Vue
-            </span>{" "}
-            depending on the project, with{" "}
-            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
-              Laravel
-            </span>{" "}
-            as my backend. I use{" "}
-            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
-              Inertia.js
-            </span>{" "}
-            as the translation layer for my full-stack apps,{" "}
-            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
-              Tailwind CSS
-            </span>{" "}
-            for styling, and{" "}
-            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
-              motion.dev
-            </span>{" "}
-            or{" "}
-            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
-              GSAP
-            </span>{" "}
-            to bring interfaces to life with smooth animations.
+          <p>
+            I build with <span className="text-textMain">React</span> and{" "}
+            <span className="text-textMain">Vue</span>, backed by{" "}
+            <span className="text-textMain">Laravel</span>. I use{" "}
+            <span className="text-textMain">Inertia.js</span> to connect the
+            stack, and style with <span className="text-textMain">Tailwind CSS</span>
+            —adding life to interfaces with <span className="text-textMain">motion.dev</span> and{" "}
+            <span className="text-textMain">GSAP</span>.
           </p>
-
         </div>
 
         <div className="flex items-center gap-4">

@@ -207,7 +207,8 @@ const Hero: React.FC = () => {
         <div className="flex items-center gap-4">
           <a
             href="mailto:feherlofia@icloud.com"
-            className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.4)] hdr:bg-[color(display-p3_1.2_1.2_1.2)] hdr:shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+            className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.4)] hdr:bg-[color(display-p3_1.2_1.2_1.2)] hdr:shadow-[0_0_15px_rgba(255,255,255,0.5)] select-none"
+            draggable="false"
           >
             Contact Me
             <ArrowUpRight

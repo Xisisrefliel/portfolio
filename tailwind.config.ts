@@ -11,6 +11,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'hdr': { 'raw': '(dynamic-range: high)' },
+      },
       fontFamily: {
         sans: ['Manrope', 'sans-serif'],
         serif: ['Playfair Display', 'serif'],

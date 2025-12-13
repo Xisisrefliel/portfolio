@@ -178,53 +178,36 @@ const Hero: React.FC = () => {
             </a>
             .
           </p>
-          <div className="relative -mx-6 sm:-mx-0">
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-            
-            <div className="overflow-hidden py-4">
-              <div className="flex gap-4 w-max animate-marquee">
-                {[...favorites, ...favorites].map(({ label, Icon, accent }, idx) => (
-                  <div
-                    key={`${label}-${idx}`}
-                    className="group relative flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm cursor-default select-none transition-transform duration-200 hover:scale-105 hover:-translate-y-0.5"
-                  >
-                    <div 
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{
-                        background: `radial-gradient(circle at 30% 50%, ${accent}15, transparent 60%)`,
-                      }}
-                    />
-                    <div 
-                      className="relative flex items-center justify-center w-8 h-8 rounded-xl"
-                      style={{
-                        background: `linear-gradient(135deg, ${accent}20, ${accent}05)`,
-                        boxShadow: `0 0 20px ${accent}15`,
-                      }}
-                    >
-                      <Icon className="w-4 h-4 relative z-10" />
-                    </div>
-                    <span className="text-sm font-medium text-textMain/90 relative z-10 tracking-wide">
-                      {label}
-                    </span>
-                    <div 
-                      className="absolute -bottom-px left-4 right-4 h-px opacity-30"
-                      style={{
-                        background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <p className="text-sm">
+            I like using{" "}
+            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
+              React
+            </span>{" "}
+            and{" "}
+            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
+              Vue
+            </span>{" "}
+            depending on the project, and{" "}
+            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
+              Laravel
+            </span>{" "}
+            as my backend. I use{" "}
+            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
+              Inertia.js
+            </span>{" "}
+            as the translation layer for my full-stack apps and{" "}
+            <span className="text-white font-medium border-b border-white/20 pb-0.5 hover:border-white/40 transition-colors cursor-default">
+              Tailwind CSS
+            </span>{" "}
+            for styling.
+          </p>
 
         </div>
 
         <div className="flex items-center gap-4">
           <a
             href="mailto:feherlofia@icloud.com"
-            className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.4)]"
+            className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.4)] hdr:bg-[color(display-p3_1.2_1.2_1.2)] hdr:shadow-[0_0_15px_rgba(255,255,255,0.5)]"
           >
             Contact Me
             <ArrowUpRight

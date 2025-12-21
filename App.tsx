@@ -78,11 +78,11 @@ const App: React.FC = () => {
             className="min-h-screen font-sans selection:bg-white/20 selection:text-white"
           >
             <main role="main" className="relative z-10 max-w-[1100px] mx-auto px-8 pb-32">
-              <section id="home">
+              <section id="home" className="pt-20 mb-24">
                 <Hero />
               </section>
 
-              <section id="cmd" className="mb-24">
+              <section id="projects" className="mb-12">
                 <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-8 pl-1">Selected Projects</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {PROJECTS.map((project, index) => (
@@ -91,9 +91,13 @@ const App: React.FC = () => {
                 </div>
               </section>
 
-              <ExperienceList experiences={EXPERIENCE} />
+              <section id="experience" className="mb-12">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-8 pl-1">Experience</h2>
+                <ExperienceList experiences={EXPERIENCE} />
+              </section>
 
-              <section id="writing" className="mb-8 border-t border-white/10 pt-12">
+              <section id="writing" className="mb-12 border-t border-white/10 pt-12">
+                <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-8 pl-1">Writing</h2>
                 <WritingList posts={POSTS} onSelectPost={handleSelectPost} />
               </section>
 

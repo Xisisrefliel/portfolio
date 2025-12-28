@@ -1,112 +1,137 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Shield, Server, Activity } from 'lucide-react';
+import GlassCard from './GlassCard';
 
 const Datenschutz: React.FC<{ onBack: () => void }> = ({ onBack }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 32, scale: 0.98 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -16, scale: 0.985 }}
-      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      className="min-h-screen"
-    >
-      <main role="main" className="relative z-10 max-w-[1100px] mx-auto px-8 pb-32">
-        <div className="pt-20 mb-12">
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-sm text-textMuted hover:text-textMain transition-colors mb-8 group"
-          >
-            <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
-            Zurück
-          </button>
+  const handleBackClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    onBack();
+  };
 
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-textMain mb-6">
+  return (
+    <div className="min-h-screen text-textMain">
+      <main role="main" className="relative mx-auto px-6 pb-24 pt-14 max-w-[880px] lg:max-w-[940px]">
+        <div className="flex items-center justify-between">
+          <a
+            href="/"
+            onClick={handleBackClick}
+            className="inline-flex items-center gap-2 text-sm text-textMuted hover:text-white transition-colors"
+          >
+            <ArrowLeft size={16} />
+            Zurück
+          </a>
+          <span className="text-[11px] uppercase tracking-[0.22em] text-textMain/80">
+            Datenschutz
+          </span>
+        </div>
+
+        <GlassCard className="mt-10">
+          <div className="space-y-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="font-serif text-4xl sm:text-5xl leading-[1.08] text-textMain"
+            >
               Datenschutz
-            </h1>
-            <p className="text-lg text-textMuted mb-12 leading-relaxed">
+            </motion.h1>
+            <p className="text-base sm:text-lg text-textMuted/85 leading-relaxed max-w-2xl border-l border-white/10 pl-4">
               Letzte Aktualisierung: Dezember 2025
             </p>
-
-            <div className="space-y-8">
-              <section className="bg-surface border border-white/5 rounded-lg p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Server size={20} className="text-textMain" />
-                  <h2 className="text-xl font-semibold text-textMain">Hosting</h2>
-                </div>
-                <p className="text-sm text-textMuted leading-relaxed">
-                  Diese Website wird von Vercel Inc. gehostet. Vercel ist ein Anbieter aus den USA, 
-                  der sich zur Einhaltung des EU-US Privacy Framework verpflichtet hat. 
-                  Weitere Informationen findest du in der{' '}
-                  <a 
-                    href="https://vercel.com/legal/privacy-policy" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-textMain underline hover:no-underline underline-offset-2"
-                  >
-                    Vercel-Datenschutzerklärung
-                  </a>.
-                </p>
-              </section>
-
-              <section className="bg-surface border border-white/5 rounded-lg p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Activity size={20} className="text-textMain" />
-                  <h2 className="text-xl font-semibold text-textMain">Analytics</h2>
-                </div>
-                <p className="text-sm text-textMuted leading-relaxed mb-4">
-                  Ich verwende Vercel Analytics, um die Nutzung dieser Website zu analysieren. 
-                  Folgende Daten werden erfasst:
-                </p>
-                <ul className="text-sm text-textMuted leading-relaxed space-y-2 mb-4 ml-4 list-disc">
-                  <li>Anonymisierte IP-Adressen</li>
-                  <li>Browser-Typ und -Version</li>
-                  <li>Betriebssystem</li>
-                  <li>Besuchte Seiten und Verweildauer</li>
-                  <li>Referrer-Quelle</li>
-                </ul>
-                <p className="text-sm text-textMuted leading-relaxed">
-                  Alle Daten werden in einem anonymisierten Format gespeichert und können 
-                  nicht direkt einer Person zugeordnet werden. Es werden keine Cookies für 
-                  Analysezwecke verwendet.
-                </p>
-              </section>
-
-              <section className="bg-surface border border-white/5 rounded-lg p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <Shield size={20} className="text-textMain" />
-                  <h2 className="text-xl font-semibold text-textMain">Deine Rechte</h2>
-                </div>
-                <p className="text-sm text-textMuted leading-relaxed mb-4">
-                  Du hast jederzeit das Recht:
-                </p>
-                <ul className="text-sm text-textMuted leading-relaxed space-y-2 ml-4 list-disc">
-                  <li>Informationen über deine gespeicherten Daten zu erhalten</li>
-                  <li>Unrichtige Daten berichtigen zu lassen</li>
-                  <li>Löschung deiner Daten zu verlangen</li>
-                  <li>Der Datenverarbeitung zu widersprechen</li>
-                </ul>
-              </section>
-
-              <section className="bg-surface border border-white/5 rounded-lg p-6">
-                <h2 className="text-xl font-semibold text-textMain mb-4">Kontakt</h2>
-                <p className="text-sm text-textMuted leading-relaxed">
-                  Bei Fragen zum Datenschutz kannst du mich per{' '}
-                  <a 
-                    href="mailto:feherlofia@icloud.com" 
-                    className="text-textMain underline hover:no-underline underline-offset-2"
-                  >
-                    E-Mail
-                  </a>{' '}
-                  kontaktieren.
-                </p>
-              </section>
-            </div>
           </div>
-        </div>
+        </GlassCard>
+
+        <article className="mt-12 space-y-10 text-[16px] leading-[1.85] text-textMuted">
+          <div className="space-y-3">
+            <h3 className="text-textMain text-xl font-semibold tracking-tight">
+              Hosting
+            </h3>
+            <p className="space-y-3">
+              Diese Website wird von Vercel Inc. gehostet. Vercel ist ein Anbieter aus den USA, 
+              der sich zur Einhaltung des EU-US Privacy Framework verpflichtet hat. 
+              Weitere Informationen findest du in der{' '}
+              <a
+                href="https://vercel.com/legal/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-textMain underline hover:no-underline underline-offset-2"
+              >
+                Vercel-Datenschutzerklärung
+              </a>.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-textMain text-xl font-semibold tracking-tight">
+              Analytics
+            </h3>
+            <p>
+              Ich verwende Vercel Analytics, um die Nutzung dieser Website zu analysieren. 
+              Folgende Daten werden erfasst:
+            </p>
+            <ul className="space-y-2 ml-6 list-disc">
+              <li>Anonymisierte IP-Adressen</li>
+              <li>Browser-Typ und -Version</li>
+              <li>Betriebssystem</li>
+              <li>Besuchte Seiten und Verweildauer</li>
+              <li>Referrer-Quelle</li>
+            </ul>
+            <p>
+              Alle Daten werden in einem anonymisierten Format gespeichert und können 
+              nicht direkt einer Person zugeordnet werden. Es werden keine Cookies für 
+              Analysezwecke verwendet.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-textMain text-xl font-semibold tracking-tight">
+              Sicherheit & Technologie
+            </h3>
+            <p className="space-y-3">
+              Um deine Privatsphäre bestmöglich zu schützen, verwendet diese Website folgende Maßnahmen:
+            </p>
+            <ul className="space-y-2 ml-6 list-disc">
+              <li><strong>Selbstgehostete Schriftarten:</strong> Alle Fonts werden lokal bereitgestellt, nicht über externe Dienste wie Google Fonts.</li>
+              <li><strong>Keine externen Tracking-Skripte:</strong> Es werden keine Drittanbieter-Tracking-Tools außer Vercel Analytics verwendet.</li>
+              <li><strong>Content-Hashed Dateinamen:</strong> JavaScript-Dateinamen werden automatisch bei jedem Build geändert und enthalten Content-Hashes.</li>
+              <li><strong>Statische Website:</strong> Keine serverseitige Datenbanken oder Benutzerauthentifizierung.</li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-textMain text-xl font-semibold tracking-tight">
+              Deine Rechte
+            </h3>
+            <p>
+              Du hast jederzeit das Recht:
+            </p>
+            <ul className="space-y-2 ml-6 list-disc">
+              <li>Informationen über deine gespeicherten Daten zu erhalten</li>
+              <li>Unrichtige Daten berichtigen zu lassen</li>
+              <li>Löschung deiner Daten zu verlangen</li>
+              <li>Der Datenverarbeitung zu widersprechen</li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-textMain text-xl font-semibold tracking-tight">
+              Kontakt
+            </h3>
+            <p>
+              Bei Fragen zum Datenschutz kannst du mich per{' '}
+              <a
+                href="mailto:feherlofia@icloud.com"
+                className="text-textMain underline hover:no-underline underline-offset-2"
+              >
+                E-Mail
+              </a>{' '}
+              kontaktieren.
+            </p>
+          </div>
+        </article>
       </main>
-    </motion.div>
+    </div>
   );
 };
 

@@ -113,16 +113,16 @@ const VueIcon: React.FC<{ className?: string }> = ({
   </svg>
 );
 
-const Hero: React.FC = () => {
-  const favorites = [
-    { label: "React", Icon: ReactIcon, accent: "#6ee7ff" },
-    { label: "TypeScript", Icon: TypeScriptIcon, accent: "#8ab4ff" },
-    { label: "Tailwind CSS", Icon: TailwindIcon, accent: "#7cd4c6" },
-    { label: "Laravel", Icon: LaravelIcon, accent: "#ff8a8a" },
-    { label: "PHP", Icon: PHPIcon, accent: "#c5b3ff" },
-    { label: "Vue", Icon: VueIcon, accent: "#41B883" },
-  ];
+const favorites = [
+  { label: "React", Icon: ReactIcon, accent: "#6ee7ff" },
+  { label: "TypeScript", Icon: TypeScriptIcon, accent: "#8ab4ff" },
+  { label: "Tailwind CSS", Icon: TailwindIcon, accent: "#7cd4c6" },
+  { label: "Laravel", Icon: LaravelIcon, accent: "#ff8a8a" },
+  { label: "PHP", Icon: PHPIcon, accent: "#c5b3ff" },
+  { label: "Vue", Icon: VueIcon, accent: "#41B883" },
+];
 
+const Hero: React.FC = () => {
   return (
     <section className="relative mb-20">
       <motion.div

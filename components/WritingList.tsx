@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Post } from '../types';
 
@@ -8,18 +9,20 @@ interface WritingListProps {
 }
 
 const WritingList: React.FC<WritingListProps> = ({ posts, onSelectPost }) => {
+  const handleClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, slug: string) => {
+    if (onSelectPost) {
+      e.preventDefault();
+      onSelectPost(slug);
+    }
+  }, [onSelectPost]);
+
   return (
     <div className="flex flex-col gap-2">
       {posts.map((post, i) => (
         <motion.a
           key={post.id}
           href={`/blog/${post.slug}`}
-          onClick={(e) => {
-            if (onSelectPost) {
-              e.preventDefault();
-              onSelectPost(post.slug);
-            }
-          }}
+          onClick={(e) => handleClick(e, post.slug)}
           initial={{ opacity: 0, x: -10 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}

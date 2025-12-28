@@ -34,22 +34,29 @@ export const CookieProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   }, []);
 
-  const acceptAll = () => {
+  const acceptAll = React.useCallback(() => {
     const newConsent = { analytics: true };
     setConsent(newConsent);
     setHasConsented(true);
     localStorage.setItem('cookieConsent', JSON.stringify(newConsent));
-  };
+  }, []);
 
-  const rejectAll = () => {
+  const rejectAll = React.useCallback(() => {
     const newConsent = { analytics: false };
     setConsent(newConsent);
     setHasConsented(true);
     localStorage.setItem('cookieConsent', JSON.stringify(newConsent));
-  };
+  }, []);
+
+  const contextValue = React.useMemo(() => ({
+    consent,
+    hasConsented,
+    acceptAll,
+    rejectAll
+  }), [consent, hasConsented, acceptAll, rejectAll]);
 
   return (
-    <CookieContext.Provider value={{ consent, hasConsented, acceptAll, rejectAll }}>
+    <CookieContext.Provider value={contextValue}>
       {children}
     </CookieContext.Provider>
   );

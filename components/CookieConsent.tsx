@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ArrowUpRight } from 'lucide-react';
 import { useCookieConsent } from './CookieContext';
+import GlassCard from './GlassCard';
 
-const CookieConsent: React.FC = () => {
+interface CookieConsentProps {
+  onNavigateToDatenschutz?: () => void;
+}
+
+const CookieConsent: React.FC<CookieConsentProps> = ({ onNavigateToDatenschutz }) => {
   const { hasConsented, acceptAll, rejectAll } = useCookieConsent();
 
   if (hasConsented) return null;
@@ -11,47 +16,59 @@ const CookieConsent: React.FC = () => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: 32 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 32 }}
-        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-[400px] z-50"
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed bottom-6 left-6 right-6 md:left-auto md:right-6 md:w-[420px] z-50"
       >
-        <div className="bg-surface border border-white/10 rounded-lg p-5 shadow-2xl">
-          <div className="flex justify-between items-start mb-3">
-            <h3 className="text-sm font-semibold text-textMain">Datenschutz</h3>
-            <button
-              onClick={rejectAll}
-              className="text-textMuted hover:text-textMain transition-colors"
-              aria-label="Close"
-            >
-              <X size={16} />
-            </button>
+        <GlassCard className="!px-6 !py-6 !from-surface !via-surface !to-surface !bg-surface border border-transparent hover:border-white/[0.08] transition-all duration-300">
+          <button
+            onClick={rejectAll}
+            className="absolute top-3 right-3 text-textMuted/60 hover:text-textMain transition-colors"
+            aria-label="Close"
+          >
+            <X size={16} />
+          </button>
+
+          <div className="flex flex-col gap-1 mb-4">
+            <span className="text-xs font-mono uppercase tracking-widest text-textMuted/60">Datenschutz</span>
+            <h3 className="text-lg font-medium text-textMain tracking-tight">
+              Privatsphäre & Analytics
+            </h3>
           </div>
-          
-          <p className="text-xs text-textMuted mb-4 leading-relaxed">
+
+          <p className="text-sm text-textMuted leading-relaxed mb-6">
             Ich verwende Vercel Analytics, um zu verstehen, wie diese Seite genutzt wird. 
-            Weitere Infos findest du auf der{' '}
-            <a href="/datenschutz" className="text-textMain underline hover:no-underline underline-offset-2">
-              Datenschutz-Seite
-            </a>.
+            Alle Daten werden anonymisiert verarbeitet.
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex items-center gap-3">
             <button
-              onClick={acceptAll}
-              className="flex-1 bg-textMain text-background px-4 py-2 rounded-md text-xs font-medium hover:bg-white transition-colors"
+              onClick={onNavigateToDatenschutz}
+              className="flex items-center gap-1.5 text-xs text-textMuted hover:text-textMain transition-colors group"
             >
-              Akzeptieren
+              Mehr erfahren
+              <ArrowUpRight 
+                size={12} 
+                className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
             </button>
+            <div className="flex-1" />
             <button
               onClick={rejectAll}
-              className="flex-1 px-4 py-2 rounded-md text-xs font-medium text-textMuted hover:text-textMain hover:bg-white/5 transition-colors border border-transparent hover:border-white/5"
+              className="px-4 py-2 text-xs font-medium text-textMuted hover:text-textMain hover:bg-white/[0.05] rounded-full border border-transparent hover:border-white/[0.08] transition-all duration-300"
             >
               Ablehnen
             </button>
+            <button
+              onClick={acceptAll}
+              className="px-4 py-2 text-xs font-medium bg-textMain text-background rounded-full hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(255,255,255,0.3)] hdr:shadow-[0_0_15px_rgba(255,255,255,0.25)] hdr:hover:shadow-[0_0_20px_rgba(255,255,255,0.35)] transition-all duration-300"
+            >
+              Akzeptieren
+            </button>
           </div>
-        </div>
+        </GlassCard>
       </motion.div>
     </AnimatePresence>
   );

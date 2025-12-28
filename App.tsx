@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Github, Twitter, Mail, Link as LinkIcon, ArrowUpRight } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
@@ -15,14 +15,16 @@ import { PROJECTS, POSTS, EXPERIENCE, SOCIALS, BLOG_POSTS } from './constants';
 
 const getSlugFromPath = () => {
   if (typeof window === 'undefined') return null;
-  
+
   if (window.location.pathname === '/datenschutz') {
     return 'datenschutz';
   }
-  
+
   const match = window.location.pathname.match(/^\/blog\/([^/]+)/);
   return match ? match[1] : null;
 };
+
+const icons = { Twitter, Github, Mail };
 
 const AppContent: React.FC = () => {
   const [currentSlug, setCurrentSlug] = useState<string | null>(() => getSlugFromPath());
@@ -36,21 +38,28 @@ const AppContent: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const handleSelectPost = (slug: string) => {
-    window.history.pushState({}, '', `/blog/${slug}`);
-    setCurrentSlug(slug);
-  };
+  const handleNavigateTo = useCallback((path: string) => {
+    if (path === '/') {
+      window.history.pushState({}, '', '/');
+      setCurrentSlug(null);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.history.pushState({}, '', path);
+      setCurrentSlug(path === '/datenschutz' ? 'datenschutz' : path.replace('/blog/', ''));
+    }
+  }, []);
 
-  const handleBackHome = () => {
-    window.history.pushState({}, '', `/`);
-    setCurrentSlug(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const handleSelectPost = useCallback((slug: string) => {
+    handleNavigateTo(`/blog/${slug}`);
+  }, [handleNavigateTo]);
 
-  const handleNavigateDatenschutz = () => {
-    window.history.pushState({}, '', `/datenschutz`);
-    setCurrentSlug('datenschutz');
-  };
+  const handleBackHome = useCallback(() => {
+    handleNavigateTo('/');
+  }, [handleNavigateTo]);
+
+  const handleNavigateDatenschutz = useCallback(() => {
+    handleNavigateTo('/datenschutz');
+  }, [handleNavigateTo]);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -64,9 +73,11 @@ const AppContent: React.FC = () => {
     window.scrollTo({ top: 0, behavior: currentSlug ? 'auto' : 'smooth' });
   }, [currentSlug]);
 
-  const post = currentSlug && currentSlug !== 'datenschutz'
-    ? BLOG_POSTS.find((p) => p.slug === currentSlug) || null
-    : null;
+  const post = useMemo(() => {
+    return currentSlug && currentSlug !== 'datenschutz'
+      ? BLOG_POSTS.find((p) => p.slug === currentSlug) || null
+      : null;
+  }, [currentSlug]);
 
   const { consent } = useCookieConsent();
 
@@ -135,7 +146,6 @@ const AppContent: React.FC = () => {
                     <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-6 pl-1">Connect</h2>
                     <div className="flex flex-wrap gap-4">
                       {SOCIALS.map((social) => {
-                        const icons = { Twitter, Github, Mail };
                         const Icon = icons[social.icon as keyof typeof icons] || LinkIcon;
                         return (
                           <a
@@ -167,7 +177,7 @@ const AppContent: React.FC = () => {
         </AnimatePresence>
       </div>
       
-      <CookieConsent />
+      <CookieConsent onNavigateToDatenschutz={handleNavigateDatenschutz} />
     </>
   );
 };

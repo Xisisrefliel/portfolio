@@ -12,8 +12,9 @@ export const PROJECTS: Project[] = [
     title: 'Takip',
     description: 'A web app to track Movies and TV Shows',
     tags: ['React', 'Next.js'],
-    link: 'https://takip-xi.vercel.app/',
-    year: '2024'
+    link: 'https://github.com/Xisisrefliel/takip',
+    year: '2024',
+    notHostedMessage: 'Not hosted right now'
   },
 ];
 

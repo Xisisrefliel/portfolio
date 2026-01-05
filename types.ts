@@ -4,8 +4,9 @@ export interface Project {
   description: string;
   tags: string[];
   link: string;
-  image?: string; // Placeholder for project image
+  image?: string;
   year: string;
+  notHostedMessage?: string;
 }
 
 export interface Post {

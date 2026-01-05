@@ -39,6 +39,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           {project.description}
         </p>
 
+        {project.notHostedMessage && (
+          <div className="mb-4 p-2 bg-yellow-500/10 border border-yellow-500/20 rounded text-xs text-yellow-500/80">
+            {project.notHostedMessage}
+          </div>
+        )}
+
         <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map(tag => (
             <span 

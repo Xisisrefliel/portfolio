@@ -178,7 +178,8 @@ const Hero: React.FC = () => {
           <p>
             I build with <span className="text-textMain">React</span> and{" "}
             <span className="text-textMain">Vue</span>, backed by{" "}
-            <span className="text-textMain">Laravel</span>. I use{" "}
+            <span className="text-textMain">Laravel</span> and{" "}
+            <span className="text-textMain">PHP</span>. I use{" "}
             <span className="text-textMain">Inertia.js</span> to connect the
             stack, and style with{" "}
             <span className="text-textMain">Tailwind CSS </span>

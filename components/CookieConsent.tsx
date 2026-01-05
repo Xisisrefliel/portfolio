@@ -32,15 +32,15 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onNavigateToDatenschutz }
           </button>
 
           <div className="flex flex-col gap-1 mb-4">
-            <span className="text-xs font-mono uppercase tracking-widest text-textMuted/60">Datenschutz</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-textMuted/60">Privacy</span>
             <h3 className="text-lg font-medium text-textMain tracking-tight">
-              Privatsphäre & Analytics
+              Privacy & Analytics
             </h3>
           </div>
 
           <p className="text-sm text-textMuted leading-relaxed mb-6">
-            Ich verwende Vercel Analytics, um zu verstehen, wie diese Seite genutzt wird. 
-            Alle Daten werden anonymisiert verarbeitet.
+            I use Vercel Analytics to understand how this site is used.
+            All data is processed anonymously.
           </p>
 
           <div className="flex items-center gap-3">
@@ -48,7 +48,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onNavigateToDatenschutz }
               onClick={onNavigateToDatenschutz}
               className="flex items-center gap-1.5 text-xs text-textMuted hover:text-textMain transition-colors group"
             >
-              Mehr erfahren
+              Learn more
               <ArrowUpRight 
                 size={12} 
                 className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -59,13 +59,13 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onNavigateToDatenschutz }
               onClick={rejectAll}
               className="px-4 py-2 text-xs font-medium text-textMuted hover:text-textMain hover:bg-white/[0.05] rounded-full border border-transparent hover:border-white/[0.08] transition-all duration-300"
             >
-              Ablehnen
+              Decline
             </button>
             <button
               onClick={acceptAll}
               className="px-4 py-2 text-xs font-medium bg-textMain text-background rounded-full hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.2)] hover:shadow-[0_0_16px_rgba(255,255,255,0.3)] hdr:shadow-[0_0_15px_rgba(255,255,255,0.25)] hdr:hover:shadow-[0_0_20px_rgba(255,255,255,0.35)] transition-all duration-300"
             >
-              Akzeptieren
+              Accept
             </button>
           </div>
         </GlassCard>

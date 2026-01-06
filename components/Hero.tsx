@@ -124,15 +124,15 @@ const favorites = [
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative mb-20">
+    <section className="relative mb-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="mb-10">
-          <div className="flex items-center gap-4 mb-5">
-            <div className="w-16 h-16 rounded-full overflow-hidden ring-2 ring-white/10 ring-offset-2 ring-offset-[#050505]">
+        <div className="mb-5">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-white/10 ring-offset-1 ring-offset-[#050505]">
               <picture>
                 <source srcSet="/profile-optimized.jpeg" type="image/jpeg" />
                 <img
@@ -149,7 +149,7 @@ const Hero: React.FC = () => {
               </picture>
             </div>
             <motion.h1
-              className="text-3xl sm:text-4xl font-bold tracking-tight"
+              className="text-xl sm:text-2xl font-bold tracking-tight"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-base text-textMuted max-w-2xl leading-relaxed space-y-4 mb-8">
+        <div className="text-sm text-textMuted max-w-2xl leading-relaxed space-y-3 mb-5">
           <p>
             I'm a Full Stack Developer based in Germany, currently working at{" "}
             <a
@@ -189,19 +189,19 @@ const Hero: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <a
             href="mailto:feherlofia@icloud.com"
-            className="group flex items-center gap-2 px-5 py-2.5 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.4)] hdr:bg-[color(display-p3_1.2_1.2_1.2)] hdr:shadow-[0_0_15px_rgba(255,255,255,0.5)] select-none"
+            className="group flex items-center gap-2 px-4 py-2 bg-textMain text-background rounded-full font-medium text-sm hover:bg-white transition-colors shadow-[0_0_12px_rgba(255,255,255,0.4)] hdr:bg-[color(display-p3_1.2_1.2_1.2)] hdr:shadow-[0_0_15px_rgba(255,255,255,0.5)] select-none"
             draggable="false"
           >
             Contact Me
             <ArrowUpRight
-              size={16}
+              size={14}
               className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             />
           </a>
-          <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-xs text-textMuted">
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-xs text-textMuted">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>

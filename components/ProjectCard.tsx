@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { Project } from '../types';
 import GlassCard from './GlassCard';
 
@@ -22,36 +22,30 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       className="group block h-full"
     >
       <GlassCard className="h-full flex flex-col transition-all duration-300 group-hover:bg-white/[0.07] group-hover:border-white/[0.1] border border-transparent">
-        <div className="flex justify-between items-start mb-4">
-          <div className="flex flex-col gap-1">
-            <h3 className="text-lg font-medium text-textMain tracking-tight group-hover:text-white transition-colors">
+        <div className="flex justify-between items-start mb-2">
+          <div className="flex flex-col gap-0.5">
+            <h3 className="text-base font-medium text-textMain tracking-tight group-hover:text-white transition-colors">
               {project.title}
             </h3>
-            <span className="text-xs font-mono text-textMuted/60">{project.year}</span>
+            <span className="text-[10px] font-mono text-textMuted/60">{project.year}</span>
           </div>
-          <ArrowUpRight 
-            size={18} 
+          <ArrowUpRight
+            size={16}
             className="text-textMuted opacity-0 -translate-y-1 translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:text-textMain"
           />
         </div>
 
-        <p className="text-sm text-textMuted leading-relaxed mb-6 flex-grow">
+        <p className="text-xs text-textMuted leading-relaxed mb-3 flex-grow">
           {project.description}
         </p>
 
-        {project.notHostedMessage && (
-          <div className="mb-4 p-2 bg-yellow-500/10 border border-yellow-500/20 rounded text-xs text-yellow-500/80">
-            {project.notHostedMessage}
-          </div>
-        )}
-
-        <div className="flex flex-wrap gap-2 mt-auto">
+        <div className="flex flex-wrap gap-1.5 mt-auto">
           {project.tags.map(tag => (
-            <span 
-              key={tag} 
+            <span
+              key={tag}
               className="
-                text-[10px] uppercase tracking-wider font-medium 
-                px-2 py-1 rounded-md
+                text-[9px] uppercase tracking-wider font-medium 
+                px-1.5 py-0.5 rounded
                 bg-white/[0.02] border border-white/[0.06]
                 text-textMuted/80
                 transition-colors
@@ -62,6 +56,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             </span>
           ))}
         </div>
+
+        {project.notHostedMessage && (
+          <div className="absolute inset-0 -m-4 bg-black/60 backdrop-blur-md rounded-[inherit] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex items-center justify-center z-20">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold text-textMuted tracking-widest uppercase">Not Hosted, See Repo on GitHub</span>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="relative">
+                <Github size={32} className="text-textMuted" />
+                <ArrowUpRight
+                  size={16}
+                  className="absolute -top-3 -right-3 text-textMuted"
+                />
+              </a>
+            </div>
+          </div>
+        )}
       </GlassCard>
     </motion.a>
   );

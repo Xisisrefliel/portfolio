@@ -8,10 +8,10 @@ const GlassCard: React.FC<GlassCardProps> = ({ children, className, ...props }) 
   return (
     <div 
       className={`
-        relative overflow-hidden rounded-3xl 
+        relative overflow-hidden rounded-xl 
         bg-gradient-to-br from-white/[0.05] via-white/[0.03] to-transparent 
-        px-6 py-8 
-        shadow-[0_26px_90px_-70px_rgba(0,0,0,0.85)]
+        px-4 py-4 
+        shadow-[0_16px_48px_-40px_rgba(0,0,0,0.85)]
         ${className || ''}
       `}
       {...props}

@@ -118,42 +118,42 @@ const AppContent: React.FC = () => {
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className="min-h-screen font-sans selection:bg-white/20 selection:text-white"
             >
-              <main role="main" className="relative z-10 max-w-[1100px] mx-auto px-8 pb-32">
-                <section id="home" className="pt-20 mb-24">
+              <main role="main" className="relative z-10 max-w-[1100px] mx-auto px-6 pb-20">
+                <section id="home" className="pt-12 mb-10">
                   <Hero />
                 </section>
 
-                <section id="projects" className="mb-12">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-8 pl-1">Selected Projects</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <section id="projects" className="mb-8">
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-textMuted mb-4 pl-0.5">Projects</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {PROJECTS.map((project, index) => (
                       <ProjectCard key={project.id} project={project} index={index} />
                     ))}
                   </div>
                 </section>
 
-                <section id="experience" className="mb-12">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-8 pl-1">Experience</h2>
+                <section id="experience" className="mb-8">
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-textMuted mb-4 pl-0.5">Experience</h2>
                   <ExperienceList experiences={EXPERIENCE} />
                 </section>
 
-                <section id="writing" className="mb-12 border-t border-white/10 pt-12">
-                  <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-8 pl-1">Writing</h2>
+                <section id="writing" className="mb-8 border-t border-white/10 pt-6">
+                  <h2 className="text-xs font-bold uppercase tracking-widest text-textMuted mb-4 pl-0.5">Writing</h2>
                   <WritingList posts={POSTS} onSelectPost={handleSelectPost} />
                 </section>
 
-                <section id="contact" className="mb-12 border-t border-white/10 pt-12">
-                    <h2 className="text-sm font-bold uppercase tracking-widest text-textMuted mb-6 pl-1">Connect</h2>
-                    <div className="flex flex-wrap gap-4">
+                <section id="contact" className="mb-6 border-t border-white/10 pt-6">
+                    <h2 className="text-xs font-bold uppercase tracking-widest text-textMuted mb-4 pl-0.5">Connect</h2>
+                    <div className="flex flex-wrap gap-2">
                       {SOCIALS.map((social) => {
                         const Icon = icons[social.icon as keyof typeof icons] || LinkIcon;
                         return (
                           <a
                             key={social.name}
                             href={social.url}
-                            className="flex items-center gap-2 text-sm text-textMuted hover:text-textMain transition-colors px-3 py-2 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/5"
+                            className="flex items-center gap-2 text-xs text-textMuted hover:text-textMain transition-colors px-2.5 py-1.5 rounded-lg hover:bg-white/5 border border-transparent hover:border-white/5"
                           >
-                            <Icon size={16} />
+                            <Icon size={14} />
                             {social.name}
                           </a>
                         );
@@ -161,14 +161,14 @@ const AppContent: React.FC = () => {
                     </div>
                 </section>
                 
-                <footer className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-textMuted/70">
-                  <p className="mt-2 sm:mt-0 text-textMain/80">Built with React & Tailwind</p>
+                <footer className="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-white/10 text-[10px] text-textMuted/70">
+                  <p className="mt-1 sm:mt-0 text-textMain/80">Built with React & Tailwind</p>
                   <button
                     onClick={handleNavigateDatenschutz}
-                    className="mt-2 sm:mt-0 flex items-center gap-1 text-textMuted/70 hover:text-textMain transition-colors"
+                    className="mt-1 sm:mt-0 flex items-center gap-1 text-textMuted/70 hover:text-textMain transition-colors"
                   >
                     Datenschutz
-                    <ArrowUpRight size={12} />
+                    <ArrowUpRight size={10} />
                   </button>
                 </footer>
               </main>

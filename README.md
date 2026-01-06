@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-A minimalist portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, a clean dark-mode design, and integrates Vercel Analytics for visitor insights.
+A minimalist portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations and a clean dark-mode design.
 
 ## Tech Stack
 
@@ -9,7 +9,6 @@ A minimalist portfolio website built with React, TypeScript, and Tailwind CSS. F
 - **Tailwind CSS** for styling
 - **Framer Motion** for animations
 - **Lucide React** for icons
-- **Vercel Analytics** for privacy-friendly tracking
 
 ## Features
 
@@ -17,9 +16,9 @@ A minimalist portfolio website built with React, TypeScript, and Tailwind CSS. F
 - Smooth page transitions and micro-interactions
 - Project showcase with hover effects
 - Blog section for writing
-- Cookie consent banner for privacy compliance
 - Fully responsive layout
 - Optimized images with lazy loading
+- Privacy-focused (no tracking, no cookies)
 
 ## Getting Started
 
@@ -75,10 +74,4 @@ src/
 
 ## Deployment
 
-Deploy to Vercel for best results (Vercel Analytics integration works out of the box):
-
-```bash
-vercel --prod
-```
-
-Or connect your GitHub repository to Vercel for automatic deployments.
+Deploy to Vercel for automatic deployments.

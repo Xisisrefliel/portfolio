@@ -161,7 +161,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-sm text-textMuted max-w-2xl leading-relaxed space-y-3 mb-5">
+        <div className="text-sm text-textMuted leading-relaxed space-y-3 mb-5">
           <p>
             I'm a Full Stack Developer based in Germany, currently working at{" "}
             <a
